@@ -1,0 +1,61 @@
+@import "tailwindcss";
+
+:root {
+  --ice-blue: #d8eef3;
+  --foreground: #171717;
+  --color-turquoise: #497D89;
+  --color-slate-blue: #6296A5;
+  --background: #DADEE1;
+  --color-glacier: #A6C6CB;
+  --color-light-green: #EAF5E2;
+  --color-light-pink: #FDE7F3;
+  --color-light-purple: #EAE3FA;
+  --olive-petal: #A3A380;
+  --golden-clover: #D7CE93;
+  --artic-daisy: #EFEBE2;
+  --rose-blush: #DBA48F;
+  --peach-blossom: #BB8588;
+  --dark-blue:#27476D;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --background: #DADEE1;
+    --foreground: #171717;
+  }
+}
+
+/* ...existing code... */
+
+body {
+  background-color: var(--background);
+  background-image: 
+    linear-gradient(var(--color-glacier) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-glacier) 1px, transparent 1px);
+  background-size: 10px 10px;
+  background-position: 0 0;
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+  min-height: 100vh;
+}
+
+/* Make the grid lines semi-transparent */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  opacity: 0.2;
+  pointer-events: none;
+  z-index: -1;
+}
