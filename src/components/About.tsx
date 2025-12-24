@@ -11,12 +11,10 @@ const About = () => {
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10" />
                             <div className="absolute inset-0 flex items-center justify-center">
                                 <div className="relative w-full h-full">
-                                    <Image
-                                        src="/pic1.jpeg"
+                                    <img
+                                        src="https://raw.githubusercontent.com/koshambiB/portfolio/main/public/pic1.jpeg"
                                         alt="Profile"
-                                        fill
-                                        className="object-cover rounded-lg"
-                                        priority
+                                        className="w-full h-full object-cover rounded-lg"
                                     />
                                 </div>
                             </div>
