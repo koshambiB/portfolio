@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 const About = () => {
     return (
         <section id="about" className="py-24 bg-background-dark">
@@ -8,12 +10,15 @@ const About = () => {
                         <div className="aspect-[4/5] bg-muted/20 rounded-lg overflow-hidden relative border border-primary/10">
                             <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-primary/10" />
                             <div className="absolute inset-0 flex items-center justify-center">
-                                <img
-                                    src="/pic1.jpeg"
-                                    alt="Profile"
-                                    className="w-full h-full object-cover rounded-lg"
-                                />
-
+                                <div className="relative w-full h-full">
+                                    <Image
+                                        src="/pic1.jpeg"
+                                        alt="Profile"
+                                        fill
+                                        className="object-cover rounded-lg"
+                                        priority
+                                    />
+                                </div>
                             </div>
                         </div>
                         {/* Decorative frame */}
