@@ -4,11 +4,11 @@ const experiences = [
     {
         company: "Flipkart",
         role: "Summer Intern",
-        period: "Upcoming 2025",
+        period: "Upcoming 2026",
         status: "upcoming",
         description:
-            "Joining as a Summer Intern to work on large-scale e-commerce systems and gain experience in building products that serve millions of users.",
-        tags: ["E-commerce", "Software Engineering", "Scale"],
+            "Joining as a Summer Intern to work in Information Security department and gain experience in building products that serve millions of users.",
+        tags: ["Infosec", "Software Development"],
     },
     {
         company: "Samsung PRISM",
@@ -17,7 +17,7 @@ const experiences = [
         status: "current",
         description:
             "Working on cutting-edge research projects, exploring innovative technologies and contributing to Samsung&apos;s research initiatives.",
-        tags: ["Research", "Innovation", "Technology"],
+        tags: ["Machine Learning", "Innovation", "LLM "],
     },
 ];
 
@@ -130,7 +130,7 @@ const Experience = () => {
                                 B.Tech in Computer Science & Engineering
                             </h3>
                             <p className="text-muted-foreground mt-2">
-                                VIT Chennai • 2022 - 2026 (Expected)
+                                VIT Chennai • 2023 - 2027 (Expected)
                             </p>
                         </div>
 
