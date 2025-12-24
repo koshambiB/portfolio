@@ -59,7 +59,7 @@ const Navigation = () => {
                             color: '#0C1519'
                         }}
                     >
-                        Let's Connect
+                        Let&apos;s Connect
                     </a>
                 </div>
             </div>

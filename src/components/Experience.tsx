@@ -1,4 +1,4 @@
-import { ArrowUpRight, Building2 } from "lucide-react";
+import { Building2 } from "lucide-react";
 
 const experiences = [
     {

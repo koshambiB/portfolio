@@ -1,4 +1,4 @@
-import { ArrowDown } from "lucide-react";
+
 
 const Hero = () => {
     return (
