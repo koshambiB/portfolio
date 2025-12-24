@@ -4,7 +4,7 @@ const Contact = () => {
     const socialLinks = [
         {
             name: "Resume",
-            href: "https://drive.google.com/file/d/1qumouWXNxN9IZtL6zlMJrb6_Fvoo_e-y/view?usp=drive_link",
+            href: "https://docs.google.com/document/d/19y-7MXnkYZ8h_JvNw-kl748-mUz7Mukh/edit?usp=drive_link&ouid=108131465955912464363&rtpof=true&sd=true",
             icon: FileText,
             label: "View My Resume",
         },
