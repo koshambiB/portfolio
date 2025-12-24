@@ -16,7 +16,7 @@ const experiences = [
         period: "Current",
         status: "current",
         description:
-            "Working on cutting-edge research projects, exploring innovative technologies and contributing to Samsung's research initiatives.",
+            "Working on cutting-edge research projects, exploring innovative technologies and contributing to Samsung&apos;s research initiatives.",
         tags: ["Research", "Innovation", "Technology"],
     },
 ];
@@ -35,7 +35,7 @@ const Experience = () => {
                         <span className="w-12 h-px bg-primary" />
                     </div>
                     <h2 className="text-4xl md:text-5xl font-medium">
-                        Where I've <span className="text-primary italic">worked</span>
+                        Where I&apos;ve <span className="text-primary italic">worked</span>
                     </h2>
                 </div>
 
@@ -66,8 +66,8 @@ const Experience = () => {
                                         {/* Status badge */}
                                         <div
                                             className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-medium mb-4 ${exp.status === "current"
-                                                    ? "bg-green-500/10 text-green-400"
-                                                    : "bg-primary/10 text-primary"
+                                                ? "bg-green-500/10 text-green-400"
+                                                : "bg-primary/10 text-primary"
                                                 }`}
                                         >
                                             {exp.status === "current" && (

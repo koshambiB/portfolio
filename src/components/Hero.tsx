@@ -26,7 +26,7 @@ const Hero = () => {
                             className="block opacity-0 animate-fade-up"
                             style={{ animationDelay: "0.4s" }}
                         >
-                            Hello, I'm
+                            Hello, I&apos;m
                         </span>
                         <span
                             className="block text-gradient-brass opacity-0 animate-fade-up"

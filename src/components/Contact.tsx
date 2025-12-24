@@ -40,11 +40,11 @@ const Contact = () => {
                     </div>
 
                     <h2 className="text-4xl md:text-6xl font-medium mb-6">
-                        Let's work <span className="text-primary italic">together</span>
+                        Let&apos;s work <span className="text-primary italic">together</span>
                     </h2>
 
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-                        I'm always open to discussing new opportunities, interesting projects,
+                        I&apos;m always open to discussing new opportunities, interesting projects,
                         or just having a conversation about technology.
                     </p>
 
@@ -82,7 +82,7 @@ const Contact = () => {
                             Ready to start a conversation?
                         </h3>
                         <p className="text-muted-foreground mb-8">
-                            Feel free to reach out. I'd love to hear from you!
+                            Feel free to reach out. I&apos;d love to hear from you!
                         </p>
                         <a
                             href="mailto:bardhankoshambi2005@gmail.com"
