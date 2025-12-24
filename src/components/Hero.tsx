@@ -1,82 +1,86 @@
-"use client";
+import { ArrowDown } from "lucide-react";
 
-import { useState } from "react";
-import { slides } from "./slides/Slides";
+const Hero = () => {
+    return (
+        <section className="min-h-screen flex flex-col justify-center relative overflow-hidden">
+            {/* Subtle gradient overlay */}
+            <div className="absolute inset-0 bg-gradient-to-b from-background via-background to-background-dark/30" />
 
-export default function Hero() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  const [pressedButton, setPressedButton] = useState<null | "prev" | "next">(null);
+            <div className="absolute top-20 right-10 w-64 h-64 rounded-full bg-primary/5 blur-3xl" />
+            <div className="absolute bottom-20 left-10 w-96 h-96 rounded-full bg-primary/10 blur-3xl" />
 
-  const darkBlue = "#0A192F";
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-4xl">
+                    <div
+                        className="inline-flex items-center gap-3 mb-8 opacity-0 animate-fade-up"
+                        style={{ animationDelay: "0.2s" }}
+                    >
+                        <span className="w-12 h-px bg-primary" />
+                        <span className="text-sm font-medium tracking-widest text-primary uppercase">
+                            Computer Science Engineer
+                        </span>
+                    </div>
 
-  const handlePrev = () => {
-    setPressedButton("prev");
-    setTimeout(() => setPressedButton(null), 150);
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
+                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-medium leading-tight mb-6">
+                        <span
+                            className="block opacity-0 animate-fade-up"
+                            style={{ animationDelay: "0.4s" }}
+                        >
+                            Hello, I'm
+                        </span>
+                        <span
+                            className="block text-gradient-brass opacity-0 animate-fade-up"
+                            style={{ animationDelay: "0.6s" }}
+                        >
+                            Koshambi Bardhan
+                        </span>
+                    </h1>
 
-  const handleNext = () => {
-    setPressedButton("next");
-    setTimeout(() => setPressedButton(null), 150);
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
+                    <p
+                        className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed opacity-0 animate-fade-up"
+                        style={{ animationDelay: "0.8s" }}
+                    >
+                        3rd Year B.Tech Computer Science student at{" "}
+                        <span className="text-foreground">VIT Chennai</span>. Currently an
+                        intern at <span className="text-primary">Samsung PRISM</span> and
+                        upcoming summer intern at{" "}
+                        <span className="text-primary">Flipkart</span>.
+                    </p>
 
-  const CurrentSlide = slides[currentSlide];
+                    <div
+                        className="flex flex-wrap gap-4 mb-12 opacity-0 animate-fade-up"
+                        style={{ animationDelay: "1s" }}
+                    >
+                        <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full">
+                            <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                            <span className="text-sm text-muted-foreground">
+                                Open to opportunities
+                            </span>
+                        </div>
+                        <div className="flex items-center gap-2 px-4 py-2 bg-card border border-border rounded-full">
+                            <span className="text-sm text-muted-foreground">📍 Chennai, India</span>
+                        </div>
+                    </div>
 
-  return (
-    <div className="flex justify-center items-center min-h-[400px] p-8">
-      <div
-        className="rounded-3xl bg-[var(--artic-daisy)] shadow-lg flex flex-col items-center p-8 relative"
-        style={{
-          height: "70vh",
-          width: "85vw",
-          boxShadow: "0 10px 15px rgba(0,0,0,0.2)",
-          border: `4px solid ${darkBlue}`,
-        }}
-      >
-        {/* Render current slide */}
-        <CurrentSlide />
+                    {/* CTA Buttons */}
+                    <div
+                        className="flex flex-wrap gap-4 opacity-0 animate-fade-up"
+                        style={{ animationDelay: "1.2s" }}
+                    >
 
-        {/* Buttons */}
-        <div
-          className="flex justify-center gap-12 mt-auto pt-8"
-          style={{ marginTop: "auto" }}
-        >
-          <button
-            onClick={handlePrev}
-            className={`relative w-14 h-14 flex items-center justify-center cursor-pointer rounded-md bg-[var(--ice-blue)] border-2 shadow-[5px_5px_0_0_rgba(0,0,0,0.2)] transition-all duration-150 ease-in-out ${
-              pressedButton === "prev"
-                ? "shadow-[1px_1px_0_0_rgba(0,0,0,0.2)] translate-y-[2px]"
-                : ""
-            }`}
-            aria-label="Previous Slide"
-            type="button"
-            style={{ borderColor: darkBlue }}
-          >
-            <div
-              className="w-0 h-0 border-t-6 border-b-6 border-r-10 border-t-transparent border-b-transparent"
-              style={{ borderRightColor: "#27476D" }}
-            />
-          </button>
+                        <a
+                            href="#contact"
+                            className="inline-flex items-center gap-2 px-6 py-3 border border-primary/30 text-foreground font-medium rounded-full hover:bg-primary/10 transition-colors"
+                        >
+                            Get in Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
 
-          <button
-            onClick={handleNext}
-            className={`relative w-14 h-14 flex items-center justify-center cursor-pointer rounded-md bg-[var(--ice-blue)] border-2 shadow-[5px_5px_0_0_rgba(0,0,0,0.2)] transition-all duration-150 ease-in-out ${
-              pressedButton === "next"
-                ? "shadow-[1px_1px_0_0_rgba(0,0,0,0.2)] translate-y-[2px]"
-                : ""
-            }`}
-            aria-label="Next Slide"
-            type="button"
-            style={{ borderColor: darkBlue }}
-          >
-            <div
-              className="w-0 h-0 border-t-6 border-b-6 border-l-10 border-t-transparent border-b-transparent"
-              style={{ borderLeftColor: "#27476D" }}
-            />
-          </button>
-        </div>
-      </div>
-    </div>
-  );
-}
+
+        </section>
+    );
+};
+
+export default Hero;

@@ -1,61 +1,98 @@
 @import "tailwindcss";
 
 :root {
-  --ice-blue: #d8eef3;
-  --foreground: #171717;
-  --color-turquoise: #497D89;
-  --color-slate-blue: #6296A5;
-  --background: #DADEE1;
-  --color-glacier: #A6C6CB;
-  --color-light-green: #EAF5E2;
-  --color-light-pink: #FDE7F3;
-  --color-light-purple: #EAE3FA;
-  --olive-petal: #A3A380;
-  --golden-clover: #D7CE93;
-  --artic-daisy: #EFEBE2;
-  --rose-blush: #DBA48F;
-  --peach-blossom: #BB8588;
-  --dark-blue:#123258;
+  /* Color palette */
+  --background: #0C1519;
+  --foreground: #F5F5F5;
+  --primary: #CF9D7B;
+  --secondary: #C7C7C7;
+
+  /* Additional colors */
+  --background-dark: #162127;
+  --accent-dark: #724B39;
+  --muted: #9CA3AF;
+
+  /* Fonts */
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-background-dark: var(--background-dark);
+  --color-accent-dark: var(--accent-dark);
+  --color-muted: var(--muted);
+  --color-card: var(--background-dark);
+  --color-border: rgba(207, 157, 123, 0.2);
+  --color-muted-foreground: var(--muted);
+  --color-primary-foreground: var(--background);
+  --font-sans: var(--font-sans);
+  --font-mono: var(--font-mono);
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    --background: #DADEE1;
-    --foreground: #171717;
-  }
+html,
+body {
+  min-height: 100%;
 }
-
-/* ...existing code... */
 
 body {
   background-color: var(--background);
-  background-image: 
-    linear-gradient(var(--color-glacier) 1px, transparent 1px),
-    linear-gradient(90deg, var(--color-glacier) 1px, transparent 1px);
-  background-size: 10px 10px;
-  background-position: 0 0;
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 100vh;
+  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
 }
 
-/* Make the grid lines semi-transparent */
-body::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: inherit;
-  opacity: 0.2;
-  pointer-events: none;
-  z-index: -1;
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background-color: var(--primary);
+  color: var(--background);
+}
+
+/* Animations */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+/* Gradient text */
+.text-gradient-brass {
+  background: linear-gradient(135deg, var(--primary) 0%, #E8B88F 50%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }

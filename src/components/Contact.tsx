@@ -1,142 +1,101 @@
-'use client';
+import { Mail, Github, Linkedin, ArrowUpRight, FileText } from "lucide-react";
 
-import React, { useState } from "react";
+const Contact = () => {
+    const socialLinks = [
+        {
+            name: "Resume",
+            href: "https://drive.google.com/file/d/1qumouWXNxN9IZtL6zlMJrb6_Fvoo_e-y/view?usp=drive_link",
+            icon: FileText,
+            label: "View My Resume",
+        },
+        {
+            name: "GitHub",
+            href: "https://github.com/koshambiB",
+            icon: Github,
+            label: "github.com/koshambiB",
+        },
+        {
+            name: "LinkedIn",
+            href: "https://www.linkedin.com/in/koshambi-bardhan-62b83b2ab/",
+            icon: Linkedin,
+            label: "linkedin.com/in/koshambi-bardhan",
+        },
+    ];
 
-const colors = {
-  linkedin: "#315491ff",
-  github: "#7eb3c5ff",
-  mail: "#516292ff",
-  resume: "#76a7d1ff",
-  text: "#0A192F",
-  icon: "#FFFFFF",
+    return (
+        <section id="contact" className="py-24 bg-background relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
+            <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-primary/10 blur-3xl" />
+
+            <div className="container mx-auto px-6 relative z-10">
+                <div className="max-w-4xl mx-auto text-center">
+                    {/* Header */}
+                    <div className="inline-flex items-center gap-3 mb-6">
+                        <span className="w-12 h-px bg-primary" />
+                        <span className="text-sm font-medium tracking-widest text-primary uppercase">
+                            Get in Touch
+                        </span>
+                        <span className="w-12 h-px bg-primary" />
+                    </div>
+
+                    <h2 className="text-4xl md:text-6xl font-medium mb-6">
+                        Let's work <span className="text-primary italic">together</span>
+                    </h2>
+
+                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
+                        I'm always open to discussing new opportunities, interesting projects,
+                        or just having a conversation about technology.
+                    </p>
+
+                    {/* Contact links */}
+                    <div className="grid md:grid-cols-3 gap-6 mb-16">
+                        {socialLinks.map((link) => (
+                            <a
+                                key={link.name}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="group bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5"
+                            >
+                                <div className="flex items-center justify-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-muted/20 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
+                                        <link.icon className="w-5 h-5 text-primary" />
+                                    </div>
+                                </div>
+                                <div className="mt-4">
+                                    <h3 className="font-medium text-foreground group-hover:text-primary transition-colors">
+                                        {link.name}
+                                    </h3>
+                                    <p className="text-sm text-muted-foreground mt-1 truncate">
+                                        {link.label}
+                                    </p>
+                                </div>
+                                <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary mx-auto mt-4 transition-colors" />
+                            </a>
+                        ))}
+                    </div>
+
+                    {/* CTA */}
+                    <div className="bg-card border border-border rounded-2xl p-10">
+                        <h3 className="text-2xl md:text-3xl font-medium mb-4">
+                            Ready to start a conversation?
+                        </h3>
+                        <p className="text-muted-foreground mb-8">
+                            Feel free to reach out. I'd love to hear from you!
+                        </p>
+                        <a
+                            href="mailto:bardhankoshambi2005@gmail.com"
+                            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-medium rounded-full hover:opacity-90 transition-all hover:gap-3 text-lg"
+                        >
+                            <Mail className="w-5 h-5" />
+                            Send me an email
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
 };
 
-const searchIcon = (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    strokeWidth={1.5}
-    stroke={colors.icon}
-    className="w-6 h-6"
-  >
-    <path
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-    />
-  </svg>
-);
-
-export default function Contact() {
-  const bubbleFullWidth = 280;
-  const circleWidth = 48; // size of collapsed circle
-
-  const contacts = [
-    {
-      label: "LinkedIn",
-      href: "https://www.linkedin.com/in/koshambi-bardhan-62b83b2ab/",
-      color: colors.linkedin,
-    },
-    { label: "GitHub", href: "https://github.com/koshambiB", color: colors.github },
-    {
-      label: "Mail",
-      href: "mailto:bardhankoshambi2005@gmail.com",
-      color: colors.mail,
-    },
-    { label: "Resume", href: "/resume2025.pdf", color: colors.resume, download: true },
-  ];
-
-  const [collapsingIndex, setCollapsingIndex] = useState(null);
-  const [animating, setAnimating] = useState(false);
-
-  const animationDuration = 350;
-
-  const handleClick = (index, href, download) => (e) => {
-    e.preventDefault();
-    if (animating) return; // block further clicks
-    setCollapsingIndex(index);
-    setAnimating(true);
-    setTimeout(() => {
-      if (download) {
-        const link = document.createElement('a');
-        link.href = href;
-        link.download = "resume2025.pdf";
-        link.target = "_blank";
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-      } else {
-        window.open(href, "_blank", "noopener,noreferrer");
-      }
-      setCollapsingIndex(null);
-      setAnimating(false);
-    }, animationDuration);
-  };
-
-  return (
-    <div className="flex justify-center p-8 my-16">
-      <div
-        className="rounded-3xl bg-[var(--artic-daisy)] border-4 border-[var(--dark-blue)] shadow-[5px_5px_0_0_rgba(0,0,0,0.4)] flex flex-col items-center p-8 gap-6"
-        style={{
-          maxWidth: 320,
-          width: "100%",
-          minHeight: "auto",
-        }}
-      >
-        {contacts.map(({ label, href, color, download }, index) => {
-          const isCollapsing = collapsingIndex === index;
-          const width = isCollapsing ? circleWidth : bubbleFullWidth;
-          return (
-            <a
-              key={label}
-              href={href}
-              download={download ? "resume2025.pdf" : undefined}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 px-6 py-3 rounded-full cursor-pointer select-none transition-colors duration-200 justify-start text-left"
-              style={{
-                backgroundColor: color,
-                width,
-                color: colors.text,
-                textAlign: "left",
-                transition: `width ${animationDuration}ms cubic-bezier(.8,-0.01,.17,1.02)`,
-                pointerEvents: animating && !isCollapsing ? "none" : "auto",
-                overflow: "hidden", // important: contents should "clip" rather than reflow!
-                boxShadow: 'inset 0 2px 4px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.2)'
-              }}
-              onMouseEnter={(e) => {
-                if (!animating) e.currentTarget.style.filter = "brightness(1.1)";
-              }}
-              onMouseLeave={(e) => {
-                if (!animating) e.currentTarget.style.filter = "brightness(1)";
-              }}
-              onClick={handleClick(index, href, download)}
-            >
-              <span
-                className="flex items-center justify-center flex-shrink-0"
-                style={{ color: colors.icon, minWidth: 24 }}
-              >
-                {searchIcon}
-              </span>
-              {/* The label will slide out as bubble width shrinks */}
-              <span
-                className="font-semibold text-lg"
-                style={{
-                  whiteSpace: "nowrap", // don't wrap
-                  overflow: "hidden",
-                  textOverflow: "clip",
-                  marginLeft: 12,
-                  opacity: isCollapsing ? 0 : 1,
-                  transition: `opacity ${animationDuration * 0.6}ms cubic-bezier(.7,-0.01,.17,0.92)`,
-                }}
-              >
-                {label}
-              </span>
-            </a>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
+export default Contact;
