@@ -1,23 +1,45 @@
-import { Building2 } from "lucide-react";
+import { ArrowUpRight, Building2, Users, Cpu } from "lucide-react";
 
 const experiences = [
     {
         company: "Flipkart",
         role: "Summer Intern",
-        period: "Upcoming 2026",
+        period: "Upcoming 2025",
         status: "upcoming",
         description:
-            "Joining as a Summer Intern to work in Information Security department and gain experience in building products that serve millions of users.",
-        tags: ["Infosec", "Software Development"],
+            "Joining as a Summer Intern to work on large-scale e-commerce systems and gain experience in building products that serve millions of users.",
+        tags: ["E-commerce", "Software Engineering", "Scale"],
+        icon: Building2,
     },
     {
         company: "Samsung PRISM",
         role: "Research Intern",
-        period: "Current",
+        period: "Sep 2025 - Present",
         status: "current",
         description:
-            "Working on cutting-edge research projects, exploring innovative technologies and contributing to Samsung&apos;s research initiatives.",
-        tags: ["Machine Learning", "Innovation", "LLM "],
+            "Contributing to the development of multimodal LLM-based systems and Generative Document Automation projects. Following core Software Engineering principles and the SDLC lifecycle to design, implement, and validate scalable research-driven prototypes.",
+        tags: ["Research", "LLMs", "Generative AI", "SDLC"],
+        icon: Building2,
+    },
+    {
+        company: "IEEE Computer Society",
+        role: "Technical Member",
+        period: "Aug 2024 - Sep 2025",
+        status: "past",
+        description:
+            "Engineered responsive interfaces for 3+ projects using Next.js, Node.js, HTML, and CSS. Designed Capture the Flag (CTF) challenges for club events, engaging participants in problem-solving activities.",
+        tags: ["Web Development", "CTF", "Technical Events"],
+        icon: Cpu,
+    },
+    {
+        company: "Event Manager's Club",
+        role: "Core Member",
+        period: "Jan 2024 - Jul 2025",
+        status: "past",
+        description:
+            "Managed and executed technical and cultural events for VIT Chennai's annual fest. Orchestrated a workforce of 250+ members to engage 2,000+ participants across multiple events, overseeing vendor coordination, scheduling, and real-time issue resolution.",
+        tags: ["Event Management", "Leadership", "Coordination"],
+        icon: Users,
     },
 ];
 
@@ -35,7 +57,7 @@ const Experience = () => {
                         <span className="w-12 h-px bg-primary" />
                     </div>
                     <h2 className="text-4xl md:text-5xl font-medium">
-                        Where I&apos;ve <span className="text-primary italic">worked</span>
+                        Where I've <span className="text-primary italic">worked</span>
                     </h2>
                 </div>
 
@@ -78,12 +100,12 @@ const Experience = () => {
 
                                         <div className="flex items-start gap-4 mb-4">
                                             <div
-                                                className={`w-12 h-12 rounded-lg bg-muted/20 flex items-center justify-center shrink-0 ${index % 2 === 0 ? "order-last" : ""
+                                                className={`w-12 h-12 rounded-lg bg-muted/20 flex items-center justify-center shrink-0 ${index % 2 === 0 ? "md:order-last" : ""
                                                     }`}
                                             >
-                                                <Building2 className="w-6 h-6 text-primary" />
+                                                <exp.icon className="w-6 h-6 text-primary" />
                                             </div>
-                                            <div className={`flex-1 ${index % 2 === 0 ? "text-right" : ""}`}>
+                                            <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : ""}`}>
                                                 <h3 className="text-xl font-medium group-hover:text-primary transition-colors">
                                                     {exp.company}
                                                 </h3>
@@ -130,7 +152,7 @@ const Experience = () => {
                                 B.Tech in Computer Science & Engineering
                             </h3>
                             <p className="text-muted-foreground mt-2">
-                                VIT Chennai • 2023 - 2027 (Expected)
+                                VIT Chennai • 2022 - 2026 (Expected)
                             </p>
                         </div>
 

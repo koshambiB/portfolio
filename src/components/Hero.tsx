@@ -40,7 +40,7 @@ const Hero = () => {
                         className="text-lg md:text-xl text-muted-foreground max-w-2xl mb-8 leading-relaxed opacity-0 animate-fade-up"
                         style={{ animationDelay: "0.8s" }}
                     >
-                        3rd Year B.Tech Computer Science student at{" "}
+                        a 3rd Year B.Tech Computer Science student at{" "}
                         <span className="text-foreground">VIT Chennai</span>. Currently an
                         intern at <span className="text-primary">Samsung PRISM</span> and
                         upcoming summer intern at{" "}

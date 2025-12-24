@@ -41,17 +41,6 @@ const skillCategories = [
         skills: [
             "Large Language Models (LLMs)",
             "Machine Learning",
-            "Prompt Engineering",
-            "AI Integration",
-        ],
-    },
-    {
-        title: "Currently Learning",
-        icon: Shield,
-        skills: [
-            "Information Security",
-            "Advanced ML Techniques",
-            "Secure Coding Practices",
         ],
     },
     {
@@ -65,6 +54,16 @@ const skillCategories = [
             "Time Management",
         ]
     },
+    {
+        title: "Currently Learning",
+        icon: Shield,
+        skills: [
+            "Information Security",
+            "Advanced AI/ML Techniques",
+            "Secure Coding Practices",
+        ],
+    },
+
 ];
 
 const Skills = () => {

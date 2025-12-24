@@ -4,7 +4,7 @@ import Navigation from "@/components/Navigation";
 export const metadata: Metadata = {
   title: "Koshambi Bardhan | Software Engineer",
   description:
-    "Software engineering portfolio focused on systems, research, and product-driven development.",
+    "Software engineering portfolio",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en" className="scroll-smooth">
       <body className="min-h-screen bg-[#0C1519] text-neutral-100 antialiased">
         <Navigation />
-        <div className="w-full pt-18">
+        <div className="w-full pt-20">
           {children}
         </div>
       </body>
