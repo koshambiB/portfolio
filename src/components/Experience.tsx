@@ -140,7 +140,7 @@ const Experience = () => {
                 {/* Education section */}
                 <div className="max-w-2xl mx-auto mt-16">
                     <div className="text-center mb-8">
-                        <span className="text-sm font-medium tracking-widest text-primary uppercase">
+                        <span className="text-md font-medium tracking-widest text-primary uppercase">
                             Education
                         </span>
                     </div>

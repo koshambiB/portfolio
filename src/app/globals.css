@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300.. 900&family=Tinos: ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
 
 :root {
@@ -13,8 +14,9 @@
   --muted: #9CA3AF;
 
   /* Fonts */
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Merriweather', serif;
+  --font-mono: 'Tinos', serif;
+  --font-display: 'Bungee', sans-serif;
 }
 
 @theme inline {
@@ -31,6 +33,7 @@
   --color-primary-foreground: var(--background);
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
+  --font-display: var(--font-display);
 }
 
 html,
@@ -95,4 +98,17 @@ a {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+}
+
+/* Font utility classes */
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-serif {
+  font-family: var(--font-sans);
+}
+
+.font-tinos {
+  font-family: var(--font-mono);
 }
