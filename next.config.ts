@@ -10,7 +10,6 @@ const nextConfig: NextConfig = {
   basePath,
   images: { unoptimized: true },
   agentRules: false,
-  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 };
 
 export default nextConfig;
