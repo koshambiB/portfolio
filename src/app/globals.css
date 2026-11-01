@@ -1,52 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Bungee&family=Merriweather:ital,opsz,wght@0,18..144,300..900;1,18..144,300.. 900&family=Tinos: ital,wght@0,400;0,700;1,400;1,700&display=swap');
 @import "tailwindcss";
 
 :root {
-  /* Color palette */
-  --background: #0C1519;
-  --foreground: #F5F5F5;
-  --primary: #CF9D7B;
-  --secondary: #C7C7C7;
+  --background: #0c1519;
+  --background-dark: #111d22;
+  --surface: #15232a;
+  --foreground: #ece8e3;
+  --primary: #cf9d7b;
+  --secondary: #c7c7c7;
+  --muted: #8e9aa0;
+  --line: rgba(236, 232, 227, 0.1);
 
-  /* Additional colors */
-  --background-dark: #162127;
-  --accent-dark: #724B39;
-  --muted: #9CA3AF;
-
-  /* Fonts */
-  --font-sans: 'Merriweather', serif;
-  --font-mono: 'Tinos', serif;
-  --font-display: 'Bungee', sans-serif;
+  --font-display: "Fraunces Variable", Georgia, serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-code: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 @theme inline {
   --color-background: var(--background);
+  --color-background-dark: var(--background-dark);
+  --color-surface: var(--surface);
+  --color-card: var(--surface);
   --color-foreground: var(--foreground);
   --color-primary: var(--primary);
-  --color-secondary: var(--secondary);
-  --color-background-dark: var(--background-dark);
-  --color-accent-dark: var(--accent-dark);
-  --color-muted: var(--muted);
-  --color-card: var(--background-dark);
-  --color-border: rgba(207, 157, 123, 0.2);
-  --color-muted-foreground: var(--muted);
   --color-primary-foreground: var(--background);
-  --font-sans: var(--font-sans);
-  --font-mono: var(--font-mono);
-  --font-display: var(--font-display);
+  --color-secondary: var(--secondary);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted);
+  --color-border: var(--line);
+  --font-sans: var(--font-body);
+  --font-serif: var(--font-display);
+  --font-mono: var(--font-code);
 }
 
-html,
-body {
-  min-height: 100%;
+html {
+  scroll-padding-top: 5rem;
 }
 
 body {
   background-color: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont,
-    "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  line-height: 1.65;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
 }
@@ -61,54 +55,38 @@ a {
   color: var(--background);
 }
 
-/* Animations */
-@keyframes fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
 
-  to {
-    opacity: 1;
-    transform: translateY(0);
+/* Underlined text link used across the site */
+.text-link {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.25s ease, color 0.2s ease;
+}
+
+.text-link:hover {
+  background-size: 100% 1px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    animation: fade-in 0.6s ease-out both;
   }
 }
 
 @keyframes fade-in {
   from {
     opacity: 0;
+    transform: translateY(8px);
   }
-
   to {
     opacity: 1;
+    transform: none;
   }
-}
-
-.animate-fade-up {
-  animation: fade-up 0.8s ease-out forwards;
-}
-
-.animate-fade-in {
-  animation: fade-in 0.8s ease-out forwards;
-}
-
-/* Gradient text */
-.text-gradient-brass {
-  background: linear-gradient(135deg, var(--primary) 0%, #E8B88F 50%, var(--primary) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-/* Font utility classes */
-.font-display {
-  font-family: var(--font-display);
-}
-
-.font-serif {
-  font-family: var(--font-sans);
-}
-
-.font-tinos {
-  font-family: var(--font-mono);
 }

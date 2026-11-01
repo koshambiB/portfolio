@@ -1,120 +1,87 @@
-import { ExternalLink, Github } from "lucide-react";
-
-const projects = [
-    {
-        title: "Celeris",
-        description:
-            "An offline mobile payment application developed using Kotlin, Python, Java, and Supabase. This app enables secure peer-to-peer transactions even in low or no network areas by leveraging SMS broadcast services. It integrates a lightweight SQLite database and RESTful APIs for seamless sync once connectivity is restored.",
-        tags: ["Kotlin", "Python", "Java", "Supabase", "SQLite", "REST API"],
-        github: "https://github.com/celeris-schnell",
-        link: null,
-    },
-    {
-        title: "FirstCheque",
-        description:
-            "A freelancing platform that I am developing in collaboration with my peers features an innovative AI-driven recommendation system. This system is designed to analyze user profiles, preferences, and project requirements, enabling it to suggest the most suitable freelancers for clients and vice versa.",
-        tags: ["AI/ML", "Next.js", "React", "Full-Stack"],
-        github: "https://github.com/team-schnell/firstcheque",
-        link: null,
-    },
-    {
-        title: "More Projects Coming Soon",
-        description:
-            "Currently working on several exciting projects involving machine learning, information security, and full-stack development. Stay tuned for updates on innovative solutions that blend cutting-edge technology with practical applications.",
-        tags: ["Machine Learning", "Security", "Full-Stack", "Innovation"],
-        github: null,
-        link: null,
-    },
-];
+import { ArrowUpRight, Github } from "lucide-react";
+import Section from "@/components/Section";
+import { projects, links } from "@/data/content";
 
 const Projects = () => {
     return (
-        <section id="projects" className="py-24 bg-background">
-            <div className="container mx-auto px-6">
-                {/* Header */}
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center gap-3 mb-6">
-                        <span className="w-12 h-px bg-primary" />
-                        <span className="text-sm font-medium tracking-widest text-primary uppercase">
-                            Featured Projects
-                        </span>
-                        <span className="w-12 h-px bg-primary" />
-                    </div>
-                    <h2 className="text-4xl md:text-5xl font-medium">
-                        Building <span className="text-primary italic">innovative</span> solutions
-                    </h2>
-                </div>
+        <Section id="projects" label="Projects">
+            <ol className="space-y-6">
+                {projects.map((p, i) => (
+                    <li
+                        key={p.title}
+                        className="group rounded-sm border border-border bg-surface/60 p-6 md:p-8 transition-colors hover:border-primary/40"
+                    >
+                        <div className="flex flex-wrap items-center gap-x-4 gap-y-1 font-mono text-xs text-muted mb-4">
+                            <span className="text-primary">{String(i + 1).padStart(2, "0")}</span>
+                            <span>{p.period}</span>
+                            {p.inProgress && <span>· in progress</span>}
+                        </div>
 
-                {/* Projects Grid */}
-                <div className="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {projects.map((project) => (
-                        <div
-                            key={project.title}
-                            className="bg-background-dark text-white border border-primary/20 rounded-lg p-6 hover:border-primary/50 transition-all group flex flex-col"
-                        >
-                            {/* Project Title */}
-                            <div className="flex items-start justify-between mb-4">
-                                <h3 className="text-xl font-medium group-hover:text-primary transition-colors">
-                                    {project.title}
+                        <div className="grid gap-6 lg:grid-cols-[260px_1fr] lg:gap-10">
+                            <div>
+                                <h3 className="font-serif text-2xl md:text-3xl leading-tight text-foreground">
+                                    {p.title}
                                 </h3>
-                                <div className="flex gap-2">
-                                    {project.github && (
+                                <p className="mt-2 text-sm text-secondary">{p.subtitle}</p>
+
+                                <div className="mt-5 flex gap-4 font-mono text-sm">
+                                    {p.github && (
                                         <a
-                                            href={project.github}
+                                            href={p.github}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="w-8 h-8 rounded-lg bg-background/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                                            className="inline-flex items-center gap-1.5 text-foreground hover:text-primary transition-colors"
                                         >
                                             <Github className="w-4 h-4" />
+                                            <span className="text-link">Code</span>
                                         </a>
                                     )}
-                                    {project.link && (
+                                    {p.link && (
                                         <a
-                                            href={project.link}
+                                            href={p.link}
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="w-8 h-8 rounded-lg bg-background/10 flex items-center justify-center hover:bg-primary/20 transition-colors"
+                                            className="inline-flex items-center gap-1 text-foreground hover:text-primary transition-colors"
                                         >
-                                            <ExternalLink className="w-4 h-4" />
+                                            <span className="text-link">Live</span>
+                                            <ArrowUpRight className="w-3.5 h-3.5" />
                                         </a>
                                     )}
                                 </div>
                             </div>
 
-                            {/* Description */}
-                            <p className="text-muted text-sm leading-relaxed mb-4 flex-grow">
-                                {project.description}
-                            </p>
-
-                            {/* Tags */}
-                            <div className="flex flex-wrap gap-2 mt-auto">
-                                {project.tags.map((tag) => (
-                                    <span
-                                        key={tag}
-                                        className="px-3 py-1 bg-background text-muted text-xs rounded-full"
-                                    >
-                                        {tag}
-                                    </span>
-                                ))}
+                            <div>
+                                <p className="text-secondary leading-relaxed">{p.description}</p>
+                                <ul className="mt-4 space-y-1.5 text-sm text-muted leading-relaxed">
+                                    {p.highlights.map((h) => (
+                                        <li key={h} className="relative pl-5 before:absolute before:left-0 before:top-[0.7em] before:h-px before:w-2.5 before:bg-primary/60">
+                                            {h}
+                                        </li>
+                                    ))}
+                                </ul>
+                                <ul className="mt-6 flex flex-wrap gap-2 font-mono text-xs">
+                                    {p.tags.map((t) => (
+                                        <li key={t} className="rounded-sm border border-border px-2 py-1 text-secondary">
+                                            {t}
+                                        </li>
+                                    ))}
+                                </ul>
                             </div>
                         </div>
-                    ))}
-                </div>
+                    </li>
+                ))}
+            </ol>
 
-                {/* View More */}
-                <div className="text-center mt-12">
-                    <a
-                        href="https://github.com/koshambiB"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-6 py-3 border border-primary/30 text-foreground font-medium rounded-full hover:bg-primary/10 transition-colors"
-                    >
-                        View All Projects on GitHub
-                        <ExternalLink className="w-4 h-4" />
-                    </a>
-                </div>
-            </div>
-        </section>
+            <a
+                href={links.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-10 inline-flex items-center gap-1 font-mono text-sm text-foreground hover:text-primary transition-colors"
+            >
+                <span className="text-link">More on GitHub</span>
+                <ArrowUpRight className="w-3.5 h-3.5" />
+            </a>
+        </Section>
     );
 };
 

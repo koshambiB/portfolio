@@ -1,100 +1,56 @@
-import { Mail, Github, Linkedin, ArrowUpRight, FileText } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
+import Section from "@/components/Section";
+import { links } from "@/data/content";
+
+const contactLinks = [
+    { name: "Email", href: `mailto:${links.email}`, label: links.email },
+    { name: "LinkedIn", href: links.linkedin, label: "in/koshambi-bardhan" },
+    { name: "GitHub", href: links.github, label: "koshambiB" },
+    { name: "Resume", href: links.resume, label: "PDF" },
+];
 
 const Contact = () => {
-    const socialLinks = [
-        {
-            name: "Resume",
-            href: "https://drive.google.com/file/d/1BnmYVvAvsuSmnKnMnZf_7SIx0fj18wMW/view?usp=drive_link",
-            icon: FileText,
-            label: "View My Resume",
-        },
-        {
-            name: "GitHub",
-            href: "https://github.com/koshambiB",
-            icon: Github,
-            label: "github.com/koshambiB",
-        },
-        {
-            name: "LinkedIn",
-            href: "https://www.linkedin.com/in/koshambi-bardhan-62b83b2ab/",
-            icon: Linkedin,
-            label: "linkedin.com/in/koshambi-bardhan",
-        },
-    ];
-
     return (
-        <section id="contact" className="py-24 bg-background relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute top-0 left-1/4 w-96 h-96 rounded-full bg-primary/5 blur-3xl" />
-            <div className="absolute bottom-0 right-1/4 w-64 h-64 rounded-full bg-primary/10 blur-3xl" />
+        <>
+            <Section id="contact" label="Contact">
+                <p className="font-serif text-3xl md:text-5xl leading-tight max-w-3xl">
+                    Open to backend, full-stack and AI roles, and to roles that connect business and
+                    tech.{" "}
+                    <a href={`mailto:${links.email}`} className="text-primary text-link">
+                        Email me
+                    </a>
+                    .
+                </p>
 
-            <div className="container mx-auto px-6 relative z-10">
-                <div className="max-w-4xl mx-auto text-center">
-                    {/* Header */}
-                    <div className="inline-flex items-center gap-3 mb-6">
-                        <span className="w-12 h-px bg-primary" />
-                        <span className="text-sm font-medium tracking-widest text-primary uppercase">
-                            Get in Touch
-                        </span>
-                        <span className="w-12 h-px bg-primary" />
-                    </div>
+                <ul className="mt-14 divide-y divide-border border-y border-border">
+                    {contactLinks.map((l) => {
+                        const external = !l.href.startsWith("mailto:");
+                        return (
+                            <li key={l.name}>
+                                <a
+                                    href={l.href}
+                                    {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                                    className="group grid grid-cols-[100px_1fr_auto] sm:grid-cols-[160px_1fr_auto] items-center gap-4 sm:gap-8 py-5"
+                                >
+                                    <span className="font-mono text-xs uppercase tracking-wider text-muted">{l.name}</span>
+                                    <span className="truncate text-foreground group-hover:text-primary transition-colors">
+                                        {l.label}
+                                    </span>
+                                    <ArrowUpRight className="w-4 h-4 text-muted group-hover:text-primary transition-colors" />
+                                </a>
+                            </li>
+                        );
+                    })}
+                </ul>
+            </Section>
 
-                    <h2 className="text-4xl md:text-6xl font-medium mb-6">
-                        Let&apos;s work <span className="text-primary italic">together</span>
-                    </h2>
-
-                    <p className="text-lg text-muted-foreground max-w-2xl mx-auto mb-12">
-                        I&apos;m always open to discussing new opportunities, interesting projects,
-                        or just having a conversation about technology.
-                    </p>
-
-                    {/* Contact links */}
-                    <div className="grid md:grid-cols-3 gap-6 mb-16">
-                        {socialLinks.map((link) => (
-                            <a
-                                key={link.name}
-                                href={link.href}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="group bg-card border border-border rounded-lg p-6 hover:border-primary/50 transition-all hover:shadow-lg hover:shadow-primary/5"
-                            >
-                                <div className="flex items-center justify-center gap-4">
-                                    <div className="w-12 h-12 rounded-full bg-muted/20 flex items-center justify-center group-hover:bg-primary/10 transition-colors">
-                                        <link.icon className="w-5 h-5 text-primary" />
-                                    </div>
-                                </div>
-                                <div className="mt-4">
-                                    <h3 className="font-medium text-foreground group-hover:text-primary transition-colors">
-                                        {link.name}
-                                    </h3>
-                                    <p className="text-sm text-muted-foreground mt-1 truncate">
-                                        {link.label}
-                                    </p>
-                                </div>
-                                <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary mx-auto mt-4 transition-colors" />
-                            </a>
-                        ))}
-                    </div>
-
-                    {/* CTA */}
-                    <div className="bg-card border border-border rounded-2xl p-10">
-                        <h3 className="text-2xl md:text-3xl font-medium mb-4">
-                            Ready to start a conversation?
-                        </h3>
-                        <p className="text-muted-foreground mb-8">
-                            Feel free to reach out. I&apos;d love to hear from you!
-                        </p>
-                        <a
-                            href="mailto:bardhankoshambi2005@gmail.com"
-                            className="inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-medium rounded-full hover:opacity-90 transition-all hover:gap-3 text-lg"
-                        >
-                            <Mail className="w-5 h-5" />
-                            Send me an email
-                        </a>
-                    </div>
+            <footer className="border-t border-border">
+                <div className="mx-auto max-w-6xl px-4 sm:px-6 py-8 flex flex-wrap justify-between gap-2 font-mono text-xs text-muted">
+                    <span>© {new Date().getFullYear()} Koshambi Bardhan</span>
+                    <span>Built with Next.js</span>
                 </div>
-            </div>
-        </section>
+            </footer>
+        </>
     );
 };
 
